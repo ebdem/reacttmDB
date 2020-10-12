@@ -2,6 +2,9 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import axios from 'axios';
+require('dotenv').config();
+
+console.log(process.env.REACT_APP_API_KEY)
 
 
 

@@ -4,7 +4,7 @@ import MovieList from './MovieList';
 import axios from 'axios';
 require('dotenv').config();
 
-console.log(process.env.REACT_APP_API_KEY)
+// console.log(process.env.REACT_APP_API_KEY)
 
 
 
@@ -31,10 +31,10 @@ class App extends React.Component {
 
     async componentDidMount(){
         //axios http istekleri yapmak iiçin kullanılan promise tabanlı bir kütüphane
-        const response = await axios.get('https://api.themoviedb.org/3/movie/popular?api_key=6b70f7e13482e8cfbe3a076a2dbf7e25&language=en-US&page=1');
-        console.log(response.data.results);
+        const response = await axios.get(`https://api.themoviedb.org/3/list/7061741?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`);
+        console.log(response.data.items);
         
-        this.setState({movies: response.data.results})
+        this.setState({movies: response.data.items})
     }
 
     // deleteMovie = (movie) => {
@@ -98,7 +98,7 @@ class App extends React.Component {
             (movie) => {
                 return movie.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1
             }
-        )
+        )  
         return(
             <div className='container'>
 
